@@ -1,0 +1,5 @@
+import "dotenv/config";
+
+export const { DB_URI, PORT, CLOUDINARY_API_KEY, CLOUDINARY_SECRET_KEY, CLOUDINARY_NAME, JWT_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD} = process.env;
+ 
+  
