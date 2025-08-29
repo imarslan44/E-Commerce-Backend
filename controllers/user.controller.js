@@ -22,7 +22,7 @@ export const loginUser = async(req, res)=>{
     if(password.length < 6){
       return res.json({success: false, message: "Password must be 6 characters long"});
     }
-    const user = await userModel.findOne({email}).select("password");
+    const user = await userModel.findOne({email});
     //if user exists or not
     if(!user){
       return res.json({success: false, message: "User not found"})
