@@ -24,9 +24,9 @@ import {v2 as cloudinary} from 'cloudinary';
          
          return result.secure_url; // or result.url
       }));
-  
+  n
       const productData ={
-         name,
+         name,  
          description,
          price : Number(price),
          category,

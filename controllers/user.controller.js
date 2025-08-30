@@ -34,7 +34,8 @@ export const loginUser = async(req, res)=>{
     }
 
    const token = createToken(user._id);
-   return res.json({success: true, token, user})
+  const {password :pwd, ...userWithOutPassword} = user._doc;
+   return res.json({success: true, token, user: userWithOutPassword})
 
 
 
