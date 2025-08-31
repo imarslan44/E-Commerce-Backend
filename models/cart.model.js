@@ -3,13 +3,13 @@ import mongoose from "mongoose";
 const cartSchema = new mongoose.Schema({
     // Define your schema fields here, for example:
     // userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-    items: [
-        {
-            productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-            quantity: { type: Number, required: true, min: 1 }
-        }
-    ],
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+    size : { type: String, required: true },
+    quantity: { type: Number, required: true, min: 1 },
+    
+    
+    
     // products: [{ productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' }, quantity: Number }]
 });
 

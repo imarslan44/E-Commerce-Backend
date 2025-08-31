@@ -10,7 +10,7 @@ const userAuth = async (req, res, next) => {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const user = await userModel.findById(decoded.userID);
-        console.log(user);
+     
         if (!user) {
             return res.status(401).json({ message: 'Invalid token' });
         }
@@ -18,7 +18,7 @@ const userAuth = async (req, res, next) => {
         req.user = user; // Attach user to request object
         next();
     } catch (error) {
-        res.status(401).json({ message: 'Authentication failed', error: error.message });
+        return res.status(401).json({ message: 'Authentication failed', error: error.message });
 
     }
 }
