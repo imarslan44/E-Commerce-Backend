@@ -1,4 +1,5 @@
 import Cart from "../models/cart.model.js";
+import Product from "../models/product.model.js";
 
 export const addToCart = async (req, res) =>{
     const item = req.body;
@@ -48,7 +49,8 @@ export const getCartItems = async (req, res) =>{
     const {_id} = req.user;
    
     try{
-        const cartItems = await Cart.find({user:_id });
+        const cartItems = await Cart.find({user:_id }).populate("productId");
+        
 
         if(!cartItems ||cartItems.length === 0) return res.status(200).json({ message: "No items found in cart", cartItems: [] });
 
@@ -84,7 +86,7 @@ export const updateCartItem = async(req, res) =>{
 
 export const removeFromCart = async(req, res) =>{
   const {id} = req.params;
-  const user = req.user;
+  
   
   try{
     const deleted = await Cart.findByIdAndDelete({_id: id});

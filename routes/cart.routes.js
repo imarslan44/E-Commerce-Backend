@@ -8,7 +8,7 @@ const cartRouter = express.Router();
 // Route to add item to cart
 cartRouter.post('/add', userAuth, addToCart);
 cartRouter.get('/items', userAuth, getCartItems);
-cartRouter.patch('/update/:itemId', userAuth, updateCartItem);
+cartRouter.patch('/update/:id', userAuth, updateCartItem);
 cartRouter.delete('/remove/:id', userAuth, removeFromCart);
 
 
