@@ -30,7 +30,7 @@ export const loginUser = async(req, res)=>{
     const decoded = await bcrypt.compare(password, user.password);
 
     if(!decoded){
-   return res.json({success: false, message: "Password is incorrect"})
+   return res.status(400).json({success: false, message: "Password is incorrect"})
     }
 
    const token = createToken(user._id);
@@ -55,7 +55,11 @@ export const registerUser = async (req, res)=>{
     //checking user already exists or not
     let userExist = await userModel.findOne({email});
     if(userExist){
-      return res.json({success: false, message: "User already exists"})
+     
+
+      return res.status(409).json({success: false, message: "User already exists"})
+      
+  
     }
 
 
@@ -64,7 +68,7 @@ export const registerUser = async (req, res)=>{
        return res.json({success: false, message: "Pleas enter a valid email"})
     }
     if(password.length < 6){
-       return res.json({success: false, message: "Password must be more than 6  characters"})
+       return res.status(409).json({success: false, message: "Password must be more than 6  characters"})
     }
 
     //hashing password 
