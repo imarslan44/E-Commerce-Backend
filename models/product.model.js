@@ -36,6 +36,12 @@ const productSchema = new mongoose.Schema({
     date: {type: Number, required: true}
 })
 
-const productModel = mongoose.models.product || mongoose.model("product", productSchema);
+// Use try-catch to prevent model overwrite errors
+let productModel;
+try {
+    productModel = mongoose.model("product");
+} catch (error) {
+    productModel = mongoose.model("product", productSchema);
+}
 
 export default productModel;

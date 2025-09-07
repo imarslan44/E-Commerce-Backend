@@ -7,6 +7,7 @@ import { PORT } from "./config/env.js"
 import userRouter from "./routes/user.routes.js"
 import productRouter from "./routes/product.routes.js"
 import cartRouter from "./routes/cart.routes.js"
+import OrderRouter from "./routes/order.routes.js"
 //App Config
 const app = express() 
 connectCloudinary()
@@ -20,6 +21,7 @@ app.use(cors())
 app.use("/api/user", userRouter)
 app.use("/api/product", productRouter)
 app.use("/api/cart", cartRouter)
+app.use("/api/order", OrderRouter)
 
 const port = PORT || 4000
 app.get("/",(req, res)=>{

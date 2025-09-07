@@ -93,7 +93,7 @@ export const registerUser = async (req, res)=>{
 
 //Route for adminLogin
 export const adminLogin = async (req, res)=>{
-   console.log("Admin login request received");
+
   try{
     const {email, password} = req.body;
 
